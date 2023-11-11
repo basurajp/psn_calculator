@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: #90EE90;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .header-content {
+            text-align: center;
+            margin: 50px;
+            color: #003300;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        input[type=number], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button2 {
+            background-color: #f44336;
+            color: white;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-content">
+        <h1>POOJARI STANDARD NURSERY</h1>
+    </div>
+    <div class="container">
+        <input type="number" id="rowToRow" placeholder="Enter Row to Row (in feet)">
+        <input type="number" id="plantToPlant" placeholder="Enter Plant to Plant (in feet)">
+        <select id="sugarcaneVariety">
+            <option value="CO-86032">CO-86032</option>
+            <option value="COM-0265">COM-0265</option>
+            <option value="SNK-1374">SNK-1374</option>
+            <option value="SNK-13436">SNK-13436</option>
+        </select>
+        <button class="button1" onclick="calculate()">Calculate</button>
+        <button class="button2" onclick="reset()">Recalculate</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const sugarcaneSamplingVarity = {
+            'CO-86032': 2.14,
+            'COM-0265': 2.28,
+            'SNK-1374': 3.0,
+            'SNK-13436': 3.50
+        };
+
+        const calculate = ()  => {
+            var rowToRow = document.getElementById('rowToRow').value;
+            var plantToPlant = document.getElementById('plantToPlant').value;
+            var chooseVariety = document.getElementById('sugarcaneVariety').value;
+
+            var rowToRowData = 33/rowToRow;
+            var plantToPlantData = 33/plantToPlant;
+
+            var for1Acer = (rowToRowData * plantToPlantData) * 40;
+            if(chooseVariety && sugarcaneSamplingVarity[chooseVariety]) {
+                var result = Math.round(for1Acer * sugarcaneSamplingVarity[chooseVariety]);
+                document.getElementById("result").innerHTML = "Total Cost = ₹" + result;
+            } else {
+                document.getElementById("result").innerHTML = "Please enter the valid variety.";
+            }
+        }
+
+        const reset = ()  => {
+            document.getElementById('rowToRow').value = "";
+            document.getElementById('plantToPlant').value = "";
+            document.getElementById('sugarcaneVariety').value = "CO-86032";
+            document.getElementById("result").innerHTML = "";
+        }
+    </script>
+
+</body>
+</html>
