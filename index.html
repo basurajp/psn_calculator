@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -23,13 +24,14 @@
 
         .container {
             width: 90%;
-            max-width: 400px;
+            max-width: 500px;
             background-color: #fff;
             padding: 30px;
             border-radius: 8px;
         }
 
-        input[type=number], select {
+        input[type=number],
+        select {
             width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
@@ -64,6 +66,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="header-content">
         <h1>POOJARI STANDARD NURSERY</h1>
@@ -90,16 +93,16 @@
             'SNK-13436': 3.50
         };
 
-        const calculate = ()  => {
+        const calculate = () => {
             var rowToRow = document.getElementById('rowToRow').value;
             var plantToPlant = document.getElementById('plantToPlant').value;
             var chooseVariety = document.getElementById('sugarcaneVariety').value;
 
-            var rowToRowData = 33/rowToRow;
-            var plantToPlantData = 33/plantToPlant;
+            var rowToRowData = 33 / rowToRow;
+            var plantToPlantData = 33 / plantToPlant;
 
             var for1Acer = (rowToRowData * plantToPlantData) * 40;
-            if(chooseVariety && sugarcaneSamplingVarity[chooseVariety]) {
+            if (chooseVariety && sugarcaneSamplingVarity[chooseVariety]) {
                 var result = Math.round(for1Acer * sugarcaneSamplingVarity[chooseVariety]);
                 document.getElementById("result").innerHTML = "Total Cost = ₹" + result;
             } else {
@@ -107,7 +110,7 @@
             }
         }
 
-        const reset = ()  => {
+        const reset = () => {
             document.getElementById('rowToRow').value = "";
             document.getElementById('plantToPlant').value = "";
             document.getElementById('sugarcaneVariety').value = "CO-86032";
@@ -116,4 +119,5 @@
     </script>
 
 </body>
+
 </html>
