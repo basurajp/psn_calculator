@@ -9,8 +9,9 @@
 <body>
     <section class="form-container center-content">
         <img src="img.png" alt="Poojari Standard Nursery Logo">
-        <input type="number" id="rowSpacing" placeholder="Enter Row to Row Distance  (in feet)" min="1">
-        <input type="number" id="plantSpacing" placeholder="Enter Plant to Plant  Distance(in feet)" min="1">
+        <h3>Sugar Cane Plant Calculator</h3>
+        <input type="number" id="rowSpacing" placeholder="Enter Row to Row Distance  (in feet)" min="1" required>
+        <input type="number" id="plantSpacing" placeholder="Enter Plant to Plant  Distance(in feet)" min="1" required>
 
         <select id="sugarcaneType">
             <option>Select Varites </option>
@@ -35,8 +36,13 @@
 
         <button class="action-btn calculate">Calculate</button>
         <button class="action-btn reset">Reset</button>
-        <button class="action-btn calculate">Contact Us </button>
+        <button class="action-btn contact">Contact Us </button>
 
+        <script>
+            document.querySelector('.action-btn.contact').addEventListener('click', function () {
+                window.location.href = 'https://wa.me/918660190475'; // Substitute with your contact page URL
+            });
+        </script>
         <p id="result"></p>
     </section>
     <script src="script.js"></script>
