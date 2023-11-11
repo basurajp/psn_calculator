@@ -1,84 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            background-color: #90EE90;
-            font-family: Arial, Helvetica, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .header-content {
-            text-align: center;
-            color: #003300;
-            font-weight: bold;
-            width: 100%;
-            max-width: 500px;
-        }
-
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            max-width: 500px;
-            margin-top: 20px;
-            width: 100%;
-        }
-
-        input[type=number], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        button {
-            width: 100%;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .calculate-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .reset-btn {
-            background-color: #f44336;
-            color: white;
-        }
-
-        #output {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        @media screen and (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
-    <div class="header-content">
-        <h1>POOJARI STANDARD NURSERY</h1>
-    </div>
-    <div class="container">
+
+    <!-- Form and output -->
+    <section class="form-container center-content">
+        <img src="img.png" alt="Poojari Standard Nursery Logo">
+
         <input type="number" id="rowSpacing" placeholder="Enter Row to Row (in feet)">
         <input type="number" id="plantSpacing" placeholder="Enter Plant to Plant (in feet)">
         <select id="sugarcaneType">
@@ -87,45 +20,14 @@
             <option value="SNK-1374">SNK-1374</option>
             <option value="SNK-13436">SNK-13436</option>
         </select>
-        <button class="calculate-btn" onclick="compute()">Calculate</button>
-        <button class="reset-btn" onclick="clearValues()">Recalculate</button>
+        <button class="action-btn calculate" onclick="compute()">Calculate</button>
+        <button class="action-btn reset" onclick="resetFields()">Reset</button>
+
         <p id="output"></p>
-    </div>
+    </section>
 
-    <script>
-        const varietySamplingRate = {
-            'CO-86032': 2.14,
-            'COM-0265': 2.28,
-            'SNK-1374': 3.0,
-            'SNK-13436': 3.50
-        };
+    <script src="script.js"></script>
 
-        const compute = ()  => {
-            let rowSpacing = document.getElementById('rowSpacing').value;
-            let plantSpacing = document.getElementById('plantSpacing').value;
-            let selectedVariety = document.getElementById('sugarcaneType').value;
-
-            let rowsPerAcre = 33/rowSpacing;
-            let plantsPerRow = 33/plantSpacing;
-
-            let plantsPerAcre = (rowsPerAcre * plantsPerRow) * 40;
-            
-            if(selectedVariety && varietySamplingRate[selectedVariety]) {
-                let totalCost = Math.round(plantsPerAcre * varietySamplingRate[selectedVariety]);
-                document.getElementById("output").innerHTML = "Total Cost = ₹" + totalCost;
-                document.getElementById("output").innerHTML += "<br>Plants for 1 Acer: " + Math.round(plantsPerAcre);
-                document.getElementById("output").innerHTML += "<br>Price per Plant for '"+selectedVariety+"' variety: ₹"+varietySamplingRate[selectedVariety];
-            } else {
-                document.getElementById("output").innerHTML = "Please select a valid variety.";
-            }
-        }
-
-        const clearValues = ()  => {
-            document.getElementById('rowSpacing').value = "";
-            document.getElementById('plantSpacing').value = "";
-            document.getElementById('sugarcaneType').value = "";
-            document.getElementById("output").innerHTML = "";
-        }
-    </script>
 </body>
+
 </html>
