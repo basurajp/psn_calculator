@@ -4,58 +4,42 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        /* CSS for styling the form */
-        body {
-            font-family: Arial, sans-serif;
-        }
+    <script type="text/javascript">
+        function onSubmitForm(event) {
+            event.preventDefault();
+            var name = document.getElementById('name').value;
+            var mobile = document.getElementById('mobile').value;
 
-        .container {
-            width: 300px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f4f4f4;
-            border-radius: 5px;
-        }
+            var data = new URLSearchParams();
+            data.append('name', name);
+            data.append('mobile', mobile);
 
-        .form-group {
-            margin: 10px 0;
+            fetch('https://script.google.com/macros/s/AKfycbxZAUT7ZaZUElrR40AkzutYj22r02NvY_y9kX5B6pKok3YzWhljDe0gZACL0vJPd80/exec', {
+                method: 'POST',
+                body: data,
+            })
+            .then(function (response) {
+                if (response.ok) {
+                    return response.text()
+                } else {
+                    throw new Error("Error: " + response.statusText);
+                }
+            })
+            .then(function () {
+                window.location = 'cal.html'; // Redirect to 'cal.html'
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
         }
-
-        label {
-            display: block;
-            font-weight: bold;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-
-        button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 3px;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    </script>
 
 </head>
 
 <body>
     <div class="container" id="form-container">
         <h2>Contact Information</h2>
-        <form
-            action="https://script.google.com/macros/s/AKfycbxZAUT7ZaZUElrR40AkzutYj22r02NvY_y9kX5B6pKok3YzWhljDe0gZACL0vJPd80/exec"
-            method="POST">
+        <form id="myForm" onsubmit="onSubmitForm(event);">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -67,11 +51,7 @@
             <button type="submit">Submit</button>
             <input type="hidden" name="method" value="POST">
         </form>
-
-        </form>
     </div>
-
-   
 </body>
 
 </html>
