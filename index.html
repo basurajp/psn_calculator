@@ -3,20 +3,16 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <style>
-        /* CSS for styling the form and centering it */
+        /* CSS for styling the form */
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
         }
 
         .container {
-            width: 90%;
-            max-width: 300px;
+            width: 300px;
+            margin: 0 auto;
             padding: 20px;
             background-color: #f4f4f4;
             border-radius: 5px;
@@ -27,14 +23,13 @@
         }
 
         label {
-            font-weight: bold;
             display: block;
-            margin-bottom: 5px;
+            font-weight: bold;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 10px;
+            padding: 5px;
             border: 1px solid #ccc;
             border-radius: 3px;
         }
@@ -44,55 +39,23 @@
             color: #fff;
             border: none;
             border-radius: 3px;
-            padding: 15px 20px;
+            padding: 10px 20px;
             cursor: pointer;
         }
 
-        .loading {
-            display: none;
-            text-align: center;
-        }
-
-        .loading-text {
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        /* Media query for smaller screens (e.g., mobile) */
-        @media screen and (max-width: 768px) {
-            input[type="text"] {
-                padding: 5px;
-            }
-            button {
-                padding: 10px 20px;
-            }
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 
-    <script>
-        function openCalPage(event) {
-            event.preventDefault();
-
-            // Display the loading effect
-            document.getElementById("form-container").style.display = "none";
-            document.getElementById("loading").style.display = "block";
-
-            // Simulate a 1-second delay (you can replace this with your actual submission logic)
-            setTimeout(function () {
-                // Redirect to cal.html after the loading effect
-                window.location.href = 'cal.html';
-            }, 1000);
-        }
-    </script>
 </head>
 
 <body>
-
     <div class="container" id="form-container">
         <h2>Contact Information</h2>
         <form
-            action="https://script.google.com/macros/s/AKfycbztzIyOc525TSHObUQLMCzfEhBuyfwH4nLqLpzgnEO0ove1ZLjlmKgIaBNW8Qhe86p_/exec"
-            method="POST" onsubmit="openCalPage(event)">
+            action="https://script.google.com/macros/s/AKfycbxZAUT7ZaZUElrR40AkzutYj22r02NvY_y9kX5B6pKok3YzWhljDe0gZACL0vJPd80/exec"
+            method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -102,13 +65,13 @@
                 <input type="text" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
             </div>
             <button type="submit">Submit</button>
+            <input type="hidden" name="method" value="POST">
+        </form>
+
         </form>
     </div>
 
-    <div class="loading" id="loading">
-        <p class="loading-text">Loading...</p>
-    </div>
-
+   
 </body>
 
 </html>
