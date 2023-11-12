@@ -2,50 +2,77 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS for styling the form */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin: 10px 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <script>
+        function openCalPage() {
+            // Redirect to cal.html after form submission
+            window.location.href = 'cal.html';
+        }
+    </script>
 </head>
 
 <body>
-    <section class="form-container center-content">
-        <img src="img.png" alt="Poojari Standard Nursery Logo">
-        <h3>Sugarcane Plant Calculator (Per 1 Acer)</h3>
-        <input type="number" id="rowSpacing" placeholder="Enter Row to Row Distance (in feet)" min="1" required>
-        <input type="number" id="plantSpacing" placeholder="Enter Plant to Plant  Distance (in feet)" min="1" required>
 
-        <select id="sugarcaneType">
-            <option>Select Variety </option>
-            <option value="Co-86032(Nira)">Co-86032(Nira)</option>
-            <option value="Co-86032(Foundation)">Co-86032(Foundation)</option>
-            <option value="CoM-0265">CoM-0265</option>
-            <option value="SNK-13374">SNK-13374</option>
-            <option value="SNK-13436">SNK-13436</option>
-            <option value="MS-10001">MS-10001</option>
-            <option value="VSI-8005">VSI-8005</option>
-            <option value="CoVC-18061">CoVC-18061</option>
-            <option value="CoVSI-18121">CoVSI-18121</option>
-            <option value="CoC-671">CoC-671</option>
-            <option value="SNK-049">SNK-049</option>
-            <option value="SNK-9293">SNK-9293</option>
-            <option value="CoVSI-3102">CoVSI-3102</option>
-            <option value="PDN-15012">PDN-15012</option>
-            <option value="Co-92005">Co-92005</option>
-            <option value="VCF-0517">VCF-0517</option>
-            <option value="Co-11015">Co-11015</option>
-        </select>
+    <div class="container">
+        <h2>Contact Information</h2>
+        <form
+            action="https://script.google.com/macros/s/AKfycbztzIyOc525TSHObUQLMCzfEhBuyfwH4nLqLpzgnEO0ove1ZLjlmKgIaBNW8Qhe86p_/exec"
+            method="POST" onsubmit="openCalPage()">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile:</label>
+                <input type="text" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
-        <button class="action-btn calculate">Calculate</button>
-        <button class="action-btn contact">Whatsapp Us </button>
-        <button class="action-btn reset">Reset</button>
-
-        <script>
-            document.querySelector('.action-btn.contact').addEventListener('click', function () {
-                window.location.href = 'https://wa.me/918660190475'; // Substitute with your contact page URL
-            });
-        </script>
-        <p id="result"></p>
-    </section>
-    <script src="script.js"></script>
 </body>
 
 </html>
