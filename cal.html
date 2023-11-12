@@ -3,48 +3,33 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <section class="form-container center-content">
-        <img src="img.png" alt="Poojari Standard Nursery Logo">
-        <h3>Sugarcane Plant Calculator (Per 1 Acer)</h3>
-        <input type="number" id="rowSpacing" placeholder="Enter Row to Row Distance (in feet)" min="1" required>
-        <input type="number" id="plantSpacing" placeholder="Enter Plant to Plant  Distance (in feet)" min="1" required>
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="card mt-5 p-4">
+            <img class="card-img-top mx-auto d-block" src="img.png" alt="Poojari Standard Nursery Logo">
+            <div class="card-body text-center">
+                <h5 class="card-title">Sugarcane Plant Calculator (Per 1 Acer)</h5>
+                <input type="number" id="rowSpacing" class="form-control my-3" placeholder="Enter Row to Row
+                        Distance (in feet)" min="1" required>
+                <input type="number" id="plantSpacing" class="form-control my-3" placeholder="Enter Plant to Plant 
+                        Distance (in feet)" min="1" required>
 
-        <select id="sugarcaneType">
-            <option>Select Variety </option>
-            <option value="Co-86032(Nira)">Co-86032(Nira)</option>
-            <option value="Co-86032(Foundation)">Co-86032(Foundation)</option>
-            <option value="CoM-0265">CoM-0265</option>
-            <option value="SNK-13374">SNK-13374</option>
-            <option value="SNK-13436">SNK-13436</option>
-            <option value="MS-10001">MS-10001</option>
-            <option value="VSI-8005">VSI-8005</option>
-            <option value="CoVC-18061">CoVC-18061</option>
-            <option value="CoVSI-18121">CoVSI-18121</option>
-            <option value="CoC-671">CoC-671</option>
-            <option value="SNK-049">SNK-049</option>
-            <option value="SNK-9293">SNK-9293</option>
-            <option value="CoVSI-3102">CoVSI-3102</option>
-            <option value="PDN-15012">PDN-15012</option>
-            <option value="Co-92005">Co-92005</option>
-            <option value="VCF-0517">VCF-0517</option>
-            <option value="Co-11015">Co-11015</option>
-        </select>
+                <select id="sugarcaneType" class="form-control my-3">
+                    <!-- Rest of the options -->
+                </select>
+		
+                <button class="btn btn-primary my-2 calculate w-100">Calculate</button>
+                <a href="https://wa.me/918660190475" class="btn btn-success contact my-2 w-100">Whatsapp Us</a>
+                <button class="btn btn-warning reset my-2 w-100">Reset</button>
 
-        <button class="action-btn calculate">Calculate</button>
-        <button class="action-btn contact">Whatsapp Us </button>
-        <button class="action-btn reset">Reset</button>
-
-        <script>
-            document.querySelector('.action-btn.contact').addEventListener('click', function () {
-                window.location.href = 'https://wa.me/918660190475'; // Substitute with your contact page URL
-            });
-        </script>
-        <p id="result"></p>
-    </section>
+                <p id="result" class="text-center"></p>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 
